@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handling</title>
+</head>
+<style>
+#box{
+    height:200px;
+    width:200px;
+    background-color:blue;
+    box-shadow: 1px 1px 10px 1px black;
+    margin-top:100px;
+
+}
+img{
+    width:200px;
+    height:200px;
+}
+#box,img{
+    border-radius:20px;
+}
+#box-1,img{
+    border-radius:20px;
+}
+
+</style>
+<body>
+    <h1><u>Events</u></h1>
+    <h2>An event is an action that occurs as per the user's instruction as input and gives the output in response. </h2>
+    <center><div id="box">
+        <img src="images/frontImg.jpg">
+    </div>
+    <br>
+    
+    <!---
+    <button onclick="changeColor('red')">Red</button>
+    <button onclick="changeColor('green')">Green</button>
+    <button onclick="changeColor('orange')">Orange</button>
+<br>
+    <button onclick="changeImage('images/backImg.jpg')">Image1</button>
+    <button onclick="changeImage('images/frontImg.jpg')">Image2</button>
+    <button onclick="changeImage('images/header-1.jpeg')">Image3</button>-->
+<br>
+<br>
+<div id="box-1">
+    <img src="images/itachi.jpg">
+</div>
+<br>
+    <button onclick="changeWallpaper('images/madara uchiha.jpg')">Wallpaper-1</button>
+    <button onclick="changeWallpaper('images/itachi.jpg')">Wallpaper-2</button>
+    <button onclick="changeWallpaper('images/kakashi.jpg')">Wallpaper-3</button>
+</center>
+    <script src="event handling.js"></script>
+</body>
+</html>
