@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step-1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Multi-Step Form Session Storage</h1>
+        <h2>Step-1 Personal Details</h2>
+        <form>
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Enter the Full Name">
+            <label for="email">Email</label>
+            <input type="text" id="email" placeholder="Enter the Email Address">
+            <button type="button" id="btnStep1Next">Next Step</button>
+        </form>
+    </div>
+    <script>
+        const name=document.getElementById("name")
+        const email=document.getElementById("email")
+        const btnStep1Next=document.getElementById("btnStep1Next");
+        function loadSession(){
+            let data=sessionStorage.getItem("formData") || {};
+            if(data.length > 0){
+                data=JSON.parse(data);
+                name.value=data.name;
+                email.value=data.email
+            }
+        }
+        loadSession();
+        btnStep1Next.addEventListener("click" ,function(){
+            if(name.value!="" && email.value!=""){
+                const formData=JSON.parse(sessionStorage.getItem("formData")) || {};
+                formData.name=name.value;
+                formData.email=email.value;
+                sessionStorage.setItem("formData",JSON.stringify(formData));
+                window.location.href="http://127.0.0.1:5500/Session%20Storage/Step-2.html"
+            }else{
+                alert("Please fill the Details");
+                name.focus();
+            }
+        })
+    </script>
+</body>
+</html>

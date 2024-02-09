@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step-2</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Multi-Step Form Session Storage</h1>
+        <h2>Step-2 Additional Details</h2>
+        <form>
+            <label for="address">Address</label>
+            <input type="text" id="address" placeholder="Enter the Full Address">
+            <label for="phone">Mobile</label>
+            <input type="text" id="phone" placeholder="Enter the Contact Number">
+            <button type="button" id="btnStep1Back">Back Step</button>
+            <button type="button" id="btnStep2Next">Next Step</button>
+        </form>
+    </div>
+    <script>
+        const address=document.getElementById("address")
+        const phone=document.getElementById("phone");
+        const btnStep1Back=document.getElementById("btnStep1Back")
+        const btnStep2Next=document.getElementById("btnStep2Next")
+        function loadSession(){
+            let data=sessionStorage.getItem("formData") || {};
+            if(data.length > 0){
+                data=JSON.parse(data);
+                address.value=data.address == undefined ? "" : data.address;
+                phone.value=data.phone == undefined ?  "" : data.phone;
+            }
+        }
+        loadSession();
+        btnStep1Back.addEventListener("click",function(){
+            window.location.href="http://127.0.0.1:5500/Session%20Storage/Step-1.html"
+        })
+        btnStep2Next.addEventListener("click" ,function(){
+            if(address.value!="" && phone.value!=""){
+                const formData=JSON.parse(sessionStorage.getItem("formData")) || {};
+                formData.address=address.value;
+                formData.phone=phone.value;
+                sessionStorage.setItem("formData",JSON.stringify(formData));
+                window.location.href="http://127.0.0.1:5500/Session%20Storage/Step-3.html"
+            }else{
+                alert("Please fill the Details");
+                address.focus();
+            }
+        })
+    </script>
+</body>
+</html>

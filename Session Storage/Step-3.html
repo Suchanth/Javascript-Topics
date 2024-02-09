@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Multi-Step  Form Session Storage</h1>
+        <h2>Review Details</h2>
+        <table id="dataTable"></table>
+        <button type="button" id="btnStep2Back">Back Step</button>
+        <button type="button" class="finish">Confirm Submission</button>
+    </div>
+    <script>
+        const btnStep2Back=document.getElementById("btnStep2Back");
+        const dataTable=document.getElementById("dataTable")
+        btnStep2Back.addEventListener("click",function(){
+            window.location.href="http://127.0.0.1:5500/Session%20Storage/Step-2.html"
+        });
+        function loadSession(){
+            let data=sessionStorage.getItem("formData") || {};
+            data=JSON.parse(data);
+            let output="";
+              output=`
+              <tr>
+                <th>Name</th>
+                <td>${data.name}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>${data.email}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>${data.address}</td>
+            </tr>
+            <tr>
+                <th>Contact</th>
+                <td>${data.phone}</td>
+            </tr>`;
+            dataTable.innerHTML=output;
+        }
+        loadSession();
+    </script>
+</body>
+</html>
